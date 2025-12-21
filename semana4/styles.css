@@ -1,0 +1,27 @@
+/* Botón principal rojo */
+.btn-danger {
+  background-color: #88252d;
+  border: none;
+  transition: transform 0.3s;
+}
+
+.btn-danger:hover {
+  transform: scale(1.1);
+}
+
+/* Cambiar estilo de encabezado */
+h1 {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 576px) {
+  body {
+    background-color: #faf3dd; /* beige claro */
+  }
+  h1 {
+    color: #e63946; /* rojo */
+  }
+}
+
