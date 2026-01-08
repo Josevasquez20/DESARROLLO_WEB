@@ -1,0 +1,58 @@
+/* Botón principal rojo */
+.btn-danger {
+  background-color: #88252d;
+  border: none;
+  transition: transform 0.3s;
+}
+
+.btn-danger:hover {
+  transform: scale(1.1);
+}
+
+/* Cambiar estilo de encabezado */
+h1 {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 576px) {
+  body {
+    background-color: #faf3dd; /* beige claro */
+  }
+  h1 {
+    color: #e63946; /* rojo */
+  }
+}
+
+/* ===== Estilos de la Galería ===== */
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.galeria img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  animation: aparecer 0.3s ease;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+.galeria img.seleccionada {
+  border: 4px solid #e63946;
+  box-shadow: 0 0 15px rgba(0,0,0,0.6);
+}
+
+/* Animación al agregar */
+@keyframes aparecer {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
