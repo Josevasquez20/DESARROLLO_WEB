@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+/* Estilo general de los inputs */
+input {
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Campo válido = borde verde */
+input.valido {
+    border-color: green;
+}
+
+/* Campo inválido = borde rojo */
+input.invalido {
+    border-color: red;
+}
+
+/* Mensajes de error en rojo */
+.error {
+    color: red;
+    font-size: 12px;
+}
