@@ -8,7 +8,7 @@ class Producto:
         self.precio = precio
 
     def to_tuple(self):
-        return (self.id, self.self.nombre, self.self.descripcion, self.cantidad, self. self.precio)
+        return (self.id, self.nombre, self.self.descripcion, self.cantidad, self. self.precio)
     
     #diccionario 
     def to_dict(self):

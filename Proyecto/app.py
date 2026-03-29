@@ -3,9 +3,16 @@ from form import ProductoForm
 from inventario.bd import init_db, get_db_connection
 from inventario.inventario import Inventario
 from inventario.producto import Producto
+from flask_sqlalchemy import SQLAlchemy
+from inventario.inventario_persistencia import guardar_csv, leer_csv, guardar_json, leer_json, guardar_txt, leer_txt
 
 app = Flask(__name__)
-app.config['SECRET_KEY']='mi_clave_Secreta'
+app.config['SECRET_KEY'] = 'mi_clave_Secreta'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///invent.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
+
 
 init_db()
 inventario = Inventario()
@@ -76,6 +83,47 @@ def factura():
 @app.route('/contactos')
 def contactos():
     return render_template('contactos.html')
+
+@app.route('/datos')
+def datos():
+    if request.method == 'POST':
+        nombre = request.form.get('nombre')
+        descripcion= request.form.get('descripcion')
+        cantidad = request.form.get('cantidad')
+        precio = request.form.get('precio')
+
+        #registrar en base 
+        dic={
+            'nombre': nombre,
+            'descripcion': descripcion,
+            'cantidad': cantidad,
+            'precio': precio
+        }
+        #guardar en los tres formatos
+
+        guardar_txt(f"{nombre}, {descripcion}, {cantidad}, {precio}")
+        guardar_json(dic)
+        guardar_csv(dic.values())
+        flash('Datos guardados exitosamente', 'success')
+        return redirect(url_for('datos'))
+        
+        #leer datos de los 3 formatos
+    datos_txt = leer_txt()
+    datos_json = leer_json()
+    datos_csv = leer_csv()
+    return render_template('datos.html',datos_txt = datos_txt, datos_json=datos_json, datos_csv=datos_csv)
+
+
+    
+
+    
+    
+
+
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

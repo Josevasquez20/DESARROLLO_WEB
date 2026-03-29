@@ -54,7 +54,7 @@ class Inventario:
         )
         conn.commit()
 
-        producto = self.producto[id]
+        producto = self.productos[id]
         self.nombres.discard(producto.nombre)
         producto.nombre = nombre
         producto.descripcion = descripcion
@@ -66,7 +66,7 @@ class Inventario:
     #eliminar producto 
     # eliminar producto
 def eliminar_producto(self, id):
-    if id in self.producto:
+    if id in self.productos:
         with get_db_connection() as conn:
             conn.execute('DELETE FROM productos WHERE id = ?', (id,))
             conn.commit()
